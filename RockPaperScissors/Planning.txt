@@ -1,0 +1,10 @@
+func: game()
+    - plays playRound() 5 times
+    - At the end of the 5 rounds, report who wins
+    func: GetPlayerChoice, prompts user to input their choice
+    func: GetComputerChoice, returns rock, paper, or scissors.
+    func: playRound()
+        para: playerSelection (case insensitive)
+        para: computerSelection
+        bool: Winning or losing the game
+        returns a String based on the boolean 
