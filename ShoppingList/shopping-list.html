@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/564x/b8/7f/25/b87f25d76d78f87d1dc9f8014bca7993.jpg">
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+
+      body {
+        background-color: #CCD0FF;
+        color: #000b8a;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+      } 
+
+      input {
+        background-color: #000b8a;
+        color: #CCD0FF;
+      }
+
+      h1 {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        margin-left: 5px;
+      }
+
+      img {
+        margin-right: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    
+    <h1><img src="https://i.pinimg.com/564x/b8/7f/25/b87f25d76d78f87d1dc9f8014bca7993.jpg" width="50" height="50">My shopping list</h1>
+
+    <div id="container">
+      
+      <label id="labelID" for="item">Enter a new item: </label>
+      <input type="text" name="item" id="item">
+      <button id="addItemButton">Add item</button>
+    </div>
+
+    <ul id="unorderedListID">
+
+    </ul>
+
+    <script>
+        /*
+        // ATTEMPT 1
+        const container = document.querySelector('#container');
+        const itemButton = document.querySelector("#itemButton");
+        const deleteButton = document.createElement("button");
+        
+        //delete button details
+        deleteButton.textContent = "Delete";
+        deleteButton.addEventListener("click", (target) => {
+            document.removeChild(spanElement);
+            document.removeChild(deleteButton);
+          })
+
+        itemButton.addEventListener('click', (item) => {
+
+          // assigning values
+          var item = document.getElementById("item").value;
+          let addedItem = document.createElement("li");
+          let itemSpan = document.createElement("span");
+          addedItem.textContent = item;
+
+          // Adding item title + delete button to the span
+          itemSpan.appendChild(addedItem);
+          itemSpan.appendChild(deleteButton);
+          container.appendChild(itemSpan);
+          });
+          */
+
+          // ATTEMPT 2. Following the site's instructions now.
+          const container = document.querySelector("#container");
+          const unorderedList = document.querySelector("#unorderedListID")
+          const inputBar = document.querySelector("#item");
+          const addItemButton = document.querySelector("#addItemButton")
+
+          addItemButton.addEventListener("click", (item) => {
+            var itemValue = document.getElementById("item").value;
+            // Had to check the site's code for this line specifically--other than that, I did everything else right.
+            inputBar.value = "";
+            
+            let addedItem = document.createElement("li");
+            let itemSpan = document.createElement("span");
+            let deleteButton = document.createElement("button");
+
+            addedItem.appendChild(itemSpan);
+            addedItem.appendChild(deleteButton);
+
+            itemSpan.textContent = itemValue;
+            deleteButton.textContent = "Delete";
+
+            unorderedList.appendChild(addedItem);
+
+            container.appendChild(unorderedList);
+
+            deleteButton.addEventListener("click", () => {
+              unorderedList.removeChild(addedItem);
+            })
+
+            addItemButton.focus();
+          })
+
+    </script>
+  </body>
+</html>
